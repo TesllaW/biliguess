@@ -21,11 +21,19 @@ function initMap() {
     map.on('click', function(e) {
         const latitude = e.latlng.lat.toFixed(6);
         const longitude = e.latlng.lng.toFixed(6);
+        const latLngString = `${latitude}, ${longitude}`;
         if (marker) {
             map.removeLayer(marker);
         }
         marker = L.marker([latitude, longitude]).addTo(map);
         marker.bindPopup(`${latitude}<br>${longitude}`).openPopup();
+
+        navigator.clipboard.writeText(latLngString).then(() => {
+            console.log(`Copied to clipboard: ${latLngString}`);
+        }).catch(err => {
+            console.error('Failed to copy to clipboard:', err);
+        });
+
     });
 
     // 切换瓦片函数
