@@ -25,7 +25,7 @@ function initMap() {
             map.removeLayer(marker);
         }
         marker = L.marker([latitude, longitude]).addTo(map);
-        marker.bindPopup(`Latitude: ${latitude}<br>Longitude: ${longitude}`).openPopup();
+        marker.bindPopup(`${latitude}<br>${longitude}`).openPopup();
     });
 
     // 切换瓦片函数
